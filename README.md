@@ -1,4 +1,9 @@
-This is simple project for deployment learn purpose
+This is simple project for deployment learn purpose.
+tech stack :
+- Docker as Containerization
+- Terraform as Provisioning
+- GCP as Cloud Server
+- Kubernetest as Container Orchestra
 
 # Setup Instruction
 
