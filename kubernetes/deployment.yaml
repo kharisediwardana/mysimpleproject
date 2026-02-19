@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-project
+  labels:
+    app: simple-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-project
+  template:
+    metadata:
+      labels:
+        app: simple-project
+    spec:
+      containers:
+        - name: simple-project
+          image: kewtz9/mysimpleproject:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
